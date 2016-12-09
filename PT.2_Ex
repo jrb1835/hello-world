@@ -1,0 +1,14 @@
+size(200, 200); 
+smooth();
+strokeWeight(10);
+line(75, 175, 25, 150); //arm 
+line(125, 175, 175, 150); //arm 
+strokeWeight(2);
+fill(0, 255, 0);
+triangle(100, 125, 50, 200, 150, 200); //body 
+fill(255, 0, 255);
+rect (50, 50, 100, 100); //head 
+fill(50);
+ellipse(75, 75, 10, 10); // eye
+ellipse(125, 75, 10, 10); //eye
+quad(80, 120, 120, 120, 130, 140, 70, 140);  
