@@ -1,0 +1,64 @@
+int x = 10 ;
+void setup() {
+  size(200, 200); 
+  smooth();
+}
+
+void draw() {
+  float my= constrain(mouseY, 60, 90);
+  float mxl= constrain(mouseX, 60, 90);
+  float mxr= constrain(mouseX, 110, 140);
+  background(225);
+  
+    if (keyPressed && (key == CODED)) {
+      if (keyCode == LEFT) {
+        x--;
+      } 
+      if (keyCode == RIGHT) {
+        x++;
+      }
+    }
+    
+  strokeWeight(10);
+  line(75 + x, 175, 25 + x, 150); //arm 
+  line(125 + x, 175, 175 + x, 150); //arm  
+  strokeWeight(1);
+  fill(0, 255, 0);
+  triangle(100 + x, 125, 50 + x, 200, 150 + x, 200); //body 
+  
+  if (keyPressed) {
+
+      println(key);
+
+      if(key == 'a'){
+        fill(255, 0, 0);
+        rect (50 + x, 50, 100, 100); //head
+        fill(0, 0, 255);
+        ellipse(mxl + x, my, 10, 10); // eye
+        ellipse(mxr + x, my, 10, 10); //eye
+      }
+      else if(key == 's'){
+      fill(0, 0, 255);
+        rect (50 + x, 50, 100, 100); //head
+        fill(255, 0, 0);
+        ellipse(mxl + x, my, 10, 10); // eye
+        ellipse(mxr + x, my, 10, 10); //eye
+      }
+      else{
+       fill(255, 0, 255);
+       rect (50 + x, 50, 100, 100); //head
+       fill(0);
+       ellipse(mxl + x, my, 10, 10); // eye
+       ellipse(mxr + x, my, 10, 10); //eye
+      }
+    } 
+    else {
+      fill(255, 0, 255);
+      rect (50 + x, 50, 100, 100); //head
+      fill(0);
+      ellipse(mxl + x, my, 10, 10); // eye
+      ellipse(mxr + x, my, 10, 10); //eye
+    }
+  fill(0);
+  quad(80 + x, 120, 120 + x, 120, 130 + x, 140, 70 + x, 140); //mouth 
+}
