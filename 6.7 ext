@@ -1,0 +1,21 @@
+PFont font;
+   void setup() {
+     size(480, 120);
+     smooth(); 
+
+}
+   void draw() {
+     background(255);
+     font = loadFont("ComicSansMS-36.vlw");{
+     textFont(font);
+     textSize(36);
+     text("Jackson", 25, 60);
+     fill(203, 49, 49);
+     }
+     font = loadFont("DFWaWaSC-W5-36.vlw"); {
+     textFont(font);
+     textSize(18);
+     text("Beasley", 27, 90);
+     fill(66, 76, 160);
+     }
+   }
