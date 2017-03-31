@@ -1,0 +1,33 @@
+void setup() {
+     size(480, 120);
+     smooth();
+}
+   void draw() {
+     background(204);
+     randomSeed(0);
+     for (int i = 35; i < width + 40; i += 40) {
+       float Red = random(0, 255);
+       float Green = random(0, 255);
+       float Blue = random(0, 255);
+       float scalar = random(0.25, 1.0);
+       owl(i, 110, Red, Green, Blue, scalar);
+} }
+
+ void owl(int x, int y, float  Red, float Green, float Blue, float s) {
+     pushMatrix();
+     translate(x, y);
+     scale(s);  // Set the size
+     stroke(Red, Green, Blue); // Set the gray value
+     strokeWeight(70);
+     line(0, -35, 0, -65);  // Body
+     noStroke();
+     fill(Red-100, Green-100, Blue-100);
+     ellipse(-17.5, -65, 35, 35);  // Left eye dome
+     ellipse(17.5, -65, 35, 35);   // Right eye dome
+     arc(0, -65, 70, 70, 0, PI);   // Chin
+     fill(Red-155, Green-155, Blue-155);
+     ellipse(-14, -65, 8, 8); // Left eye
+     ellipse(14, -65, 8, 8);  // Right eye
+     quad(0, -58, 4, -51, 0, -44, -4, -51); // Beak
+     popMatrix();
+}
