@@ -1,0 +1,116 @@
+PImage img;
+PFont font;
+float imageX;
+float imageY;  
+float red;
+float green; 
+float blue; 
+float rotation;
+boolean rotate; 
+float tint; 
+boolean tintonoff; 
+
+
+void setup() {
+    size(600, 500);
+    img = loadImage("bliss.jpg");
+    font = loadFont("text.vlw");
+    textFont(font);
+    imageX = 300;
+    imageY = 200;
+    rotation = 0;
+
+}
+    
+   void draw() {
+     background(255);
+     
+              if(mousePressed && mouseX < 200){ //buttons  
+       if(mouseY > 213 && mouseY < 283){ // red tint 
+           red = 255;
+           green = 0;
+           blue = 0;
+           tintonoff = true;
+       } else if(mouseY > 284 && mouseY < 354){ // green tint
+           red = 0;
+           green = 255;
+           blue = 0; 
+           tintonoff = true;
+       } else if(mouseY > 355 && mouseY < 425){  //blue tint
+           red = 0;
+           green = 0;
+           blue = 255; 
+           tintonoff = true;
+       } else if(mouseY > 426 && mouseY < 500){  //purple tint 
+           red = 255;
+           green = 0;
+           blue = 255;
+           tintonoff = true;
+       } else if(mouseY > 142 && mouseY < 212){ //reset tint 
+           tintonoff = false;
+           imageX = 300;
+           imageY = 200;
+       }
+       if (mouseY > 0 && mouseY < 70 && rotate == false){
+         rotation += 45;
+         rotate = true; 
+       }
+       if(mouseY > 71 && mouseY < 141 && mouseX < 100){
+         imageX += .5;
+         imageY += .5;
+       }
+       if(mouseY > 71 && mouseY < 141 && mouseX > 100){
+         imageX -= .5;
+         imageY -= .5;
+       }
+      }
+     
+     rectMode(CORNER);
+     strokeWeight(0);
+     fill(150);
+     rect(0, 0, 200, height);  //edit area box 
+     strokeWeight(10);
+     rect(0, 0, 200, 70);  //Rotate 
+     fill(0);
+     text("rotate", 43, 45);
+     fill(150);
+     rect(0, 71, 100, 70);  //Scale up
+     fill(0);
+     rectMode(CENTER);
+     rect(50, 106, 40, 5); //plus sign 
+     rect(50, 106, 5, 40); //plus sign 
+     fill(150);
+     rectMode(CORNER);
+     rect(100, 71, 100, 70);  //Scale down 
+     fill(0);
+     rectMode(CENTER);
+     rect(150, 106, 40, 5); //minus sign 
+     rectMode(CORNER);
+     fill(255);
+     rect(0, 142, 200, 70); // Reset filter
+     fill(0);
+     text("reset", 50, 187);
+     fill(255, 0, 0);
+     rect(0, 213, 200, 70);  //Red Filter
+     fill(0, 255, 0);
+     rect(0, 284, 200, 70);  //Green Filter
+     fill(0, 0, 255);
+     rect(0, 355, 200, 70);  //Blue Filter
+     fill(255, 0, 255);
+     rect(0, 426, 200, 70);  //Purple Filter
+ 
+     imageMode(CENTER); 
+     translate(width - imageX/2 - 50, height/2);
+     rotate(radians(rotation));
+     image(img, 0, 0, imageX, imageY);
+     if(tintonoff == true){ 
+     tint(red, green, blue);
+     }else if(tintonoff == false){
+       noTint();
+     }
+
+}
+
+void mouseReleased() {
+  rotate = false;
+}
